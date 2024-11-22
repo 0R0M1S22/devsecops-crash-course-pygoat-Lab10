@@ -22,11 +22,11 @@ RUN python -m pip install --no-cache-dir --upgrade pip
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-Copy the project files into the container
+# Copy the project files into the container
 COPY . /app/
 
-Expose the application port
+# Expose the application port
 EXPOSE 8000
 
-Run the application
+# Run the application
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "6", "pygoat.wsgi"]
