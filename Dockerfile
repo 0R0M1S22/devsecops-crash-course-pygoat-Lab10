@@ -1,9 +1,9 @@
 FROM python:3.11-slim-buster
 
-Set the working directory
+# Set the working directory
 WORKDIR /app
 
-Install system dependencies for psycopg2 and other Python packages
+# Install system dependencies for psycopg2 and other Python packages
 RUN apt-get update && apt-get install --no-install-recommends -y \
     build-essential \
     gcc \
@@ -13,11 +13,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-Set environment variables
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-Install Python dependencies
+# Install Python dependencies
 RUN python -m pip install --no-cache-dir --upgrade pip
 COPY requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
